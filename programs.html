@@ -1,0 +1,647 @@
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Programs - Terminus Soccer Academy</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+   :root {
+    --primary-blue: #003049;
+    --secondary-teal: #2ec4b6;
+    --accent-teal: #26a99c;
+    --light-bg: #f8f9fa;
+    --text-dark: #333;
+    --fancy-font-heading: 'Playfair Display', serif;
+    --fancy-font-body: 'Open Sans', sans-serif;
+    --shadow-cool: 0 8px 16px rgba(0, 0, 0, 0.2);
+    --transition-cool: all 0.3s ease-in-out;
+   }
+
+   * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+   }
+
+   body {
+    font-family: var(--fancy-font-body), sans-serif;
+    line-height: 1.6;
+    background-color: var(--light-bg);
+    color: var(--text-dark);
+   }
+
+   h1,
+   h2,
+   h3,
+   h4 {
+    font-family: var(--fancy-font-heading);
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    line-height: 1.2;
+   }
+
+   h1 {
+    font-size: 2.5rem;
+   }
+
+   h2 {
+    font-size: 2rem;
+   }
+
+   h3 {
+    font-size: 1.5rem;
+   }
+
+   h4 {
+    font-size: 1.2rem;
+    font-weight: bold;
+   }
+
+   p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+   }
+
+   a {
+    text-decoration: none;
+    color: var(--secondary-teal);
+    transition: var(--transition-cool);
+   }
+
+   a:hover {
+    color: var(--accent-teal);
+   }
+
+   img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+   }
+
+   .cta-button {
+    display: inline-block;
+    background-color: var(--accent-teal);
+    color: #fff;
+    padding: 1rem 2rem;
+    border-radius: 0.3rem;
+    font-weight: bold;
+    transition: var(--transition-cool);
+    box-shadow: var(--shadow-cool);
+   }
+
+   .cta-button:hover {
+    background-color: darken(var(--accent-teal), 10%);
+    transform: translateY(-2px);
+   }
+
+   .section-header {
+    text-align: center;
+    margin-bottom: 2rem;
+    padding-top: 2rem;
+   }
+
+   .read-more {
+    display: inline-block;
+    margin-top: 1rem;
+    color: var(--accent-teal);
+    font-weight: bold;
+    transition: var(--transition-cool);
+   }
+
+   .read-more:hover {
+    text-decoration: underline;
+   }
+
+   ul {
+    list-style: disc;
+    padding-left: 2rem;
+    margin-bottom: 1rem;
+   }
+
+   ul li {
+    margin-bottom: 0.5rem;
+   }
+
+   /* ==================== */
+   /* ==     Header     == */
+   /* ==================== */
+
+   header {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: var(--shadow-cool);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+   }
+
+   header .logo a,
+   footer .footer-logo a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+   }
+
+   header .logo img {
+    max-height: 50px;
+    margin-right: 1rem;
+   }
+
+   header .logo span {
+    font-family: var(--fancy-font-heading);
+    font-size: 1.8rem;
+    color: var(--primary-blue);
+    letter-spacing: 0.5px;
+   }
+
+   nav ul {
+    list-style: none;
+    display: flex;
+   }
+
+   nav ul li {
+    margin-left: 1.5rem;
+   }
+
+   nav ul li a {
+    color: var(--primary-blue);
+    font-weight: 600;
+    padding: 0.5rem;
+    display: block;
+   }
+
+   nav ul li a:hover,
+   nav ul li a.active {
+    color: var(--accent-teal);
+   }
+
+   /* ==================== */
+   /* ==  Programs Hero  == */
+   /* ==================== */
+
+   #programs-hero {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 60vh;
+    color: #fff;
+    text-align: center;
+    padding: 4rem 2rem;
+    margin-bottom: 2rem;
+    background-image: url('photos/programs.jpg');
+    background-size: cover;
+    background-position: center;
+   }
+
+   #programs-hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 48, 73, 0.7);
+    /* Adjust the opacity as needed */
+    z-index: -1;
+   }
+
+   #programs-hero .hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+    z-index: 1;
+    /* Ensure text is above the pseudo-element */
+    position: relative;
+   }
+
+   #programs-hero h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--accent-teal);
+   }
+
+   #programs-hero p {
+    font-size: 1.2rem;
+   }
+
+
+   /* ==================== */
+   /* == Football Program == */
+   /* ==================== */
+
+   #football-program {
+    padding: 2rem;
+    background-color: #f9f9f9;
+   }
+
+   #football-program h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+   }
+
+   #football-program h3 {
+    font-size: 1.5rem;
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--accent-teal);
+   }
+
+   #football-program h4 {
+    font-size: 1.2rem;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+   }
+
+   #football-program p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+   }
+
+   #football-program ul {
+    list-style: disc;
+    margin-left: 2rem;
+    margin-bottom: 1rem;
+   }
+
+   #football-program li {
+    margin-bottom: 0.5rem;
+   }
+
+   /* ==================== */
+   /* == Education Program == */
+   /* ==================== */
+
+   #education-program {
+    padding: 2rem;
+   }
+
+   #education-program h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+   }
+
+   #education-program h3 {
+    font-size: 1.5rem;
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--accent-teal);
+   }
+
+   #education-program h4 {
+    font-size: 1.2rem;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+   }
+
+   #education-program p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+   }
+
+   #education-program ul {
+    list-style: disc;
+    margin-left: 2rem;
+    margin-bottom: 1rem;
+   }
+
+   #education-program li {
+    margin-bottom: 0.5rem;
+   }
+
+
+   /* ==================== */
+   /* ==      Footer     == */
+   /* ==================== */
+
+   footer {
+    background-color: #333;
+    color: #fff;
+    padding: 2rem;
+    text-align: center;
+   }
+
+   footer .footer-content-minimal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    max-width: 600px;
+    margin: 0 auto;
+   }
+
+   footer .footer-logo a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+   }
+
+   footer .footer-logo img {
+    max-height: 40px;
+    margin-right: 0.5rem;
+   }
+
+   footer .footer-logo span {
+    font-family: var(--fancy-font-heading);
+    font-size: 1.4rem;
+   }
+
+   footer .footer-social-icons {
+    display: flex;
+    gap: 1rem;
+   }
+
+   footer .footer-social-icons img {
+    max-height: 30px;
+   }
+
+   footer .copyright {
+    font-size: 0.9rem;
+    color: #aaa;
+    margin-top: 1rem;
+   }
+
+   /* ==================== */
+   /* ==  Media Queries == */
+   /* ==================== */
+
+   @media (max-width: 768px) {
+    header {
+     flex-direction: column;
+     text-align: center;
+     padding: 1rem;
+    }
+
+    header .logo {
+     margin-bottom: 1rem;
+    }
+
+    nav ul {
+     flex-direction: column;
+     align-items: center;
+    }
+
+    nav ul li {
+     margin: 0.5rem 0;
+    }
+
+    nav ul li a {
+     padding: 0.5rem 1rem;
+    }
+
+    #programs-hero {
+     padding: 4rem 1rem;
+    }
+
+    #programs-hero h2 {
+     font-size: 2.2rem;
+    }
+
+    #programs-hero p {
+     font-size: 1rem;
+    }
+
+    .footer-content-minimal {
+     gap: 1rem;
+    }
+
+    footer .footer-social-icons {
+     gap: 0.5rem;
+    }
+   }
+  </style>
+ </head>
+ <body>
+  <header>
+   <div class="logo">
+    <a href="index.html">
+     <img src="photos/logo.png" alt="Terminus Soccer Academy Logo">
+     <span>Terminus Soccer Academy</span>
+    </a>
+   </div>
+   <nav>
+    <ul>
+     <li><a href="index.html">Home</a></li>
+     <li><a href="about.html">About Us</a></li>
+     <li><a href="programs.html" class="active">Programs</a></li>
+     <li><a href="news.html">News & Events</a></li>
+     <li><a href="donate.html">Donate</a></li>
+     <li><a href="contact.html">Contact</a></li>
+    </ul>
+   </nav>
+  </header>
+
+  <main>
+   <section id="programs-hero">
+    <div class="hero-content">
+     <h2>Our Programs</h2>
+     <p>
+      Learn more about the Football and Education Programs at Terminus
+      Soccer Academy.
+     </p>
+    </div>
+   </section>
+
+   <section id="football-program">
+    <div class="section-header">
+     <h2>Football Program</h2>
+    </div>
+    <div class="program-content">
+     <p>
+      This is the main program at Terminus Soccer Academy. Our goal is to
+      ensure that most of the kids and teenagers within our programs are
+      able to grow and develop their footballing skills to successfully
+      play the game professionally.
+     </p>
+
+     <h3>Benefits for kids and teenagers:</h3>
+     <ul>
+      <li>
+       Daily 2-hour training sessions in the evenings after classes during
+       the academic season.
+      </li>
+      <li>
+       Double training sessions (Morning and evening) during the holiday
+       seasons.
+      </li>
+      <li>Friendly matches with other teams to gain competitive experience.</li>
+      <li>Weekly video classes to study various aspects of football.</li>
+      <li>
+       Up to 5 Tournaments annually (both local and international) for more
+       exposure and experience.
+      </li>
+      <li>
+       Mentorship sessions from accomplished retired and current players in
+       local and international professional leagues.
+      </li>
+      <li>
+       Sourcing and securing placement into secondary schools and
+       universities on sports scholarships
+      </li>
+      <li>
+       Trial and scouting opportunities with local and foreign professional
+       clubs.
+      </li>
+     </ul>
+
+     <h3>Methodology:</h3>
+     <h4>Selection and onboarding of kids and teenagers to the programs</h4>
+     <p>
+      We will find the most needy and talented kids and teenagers who we
+      can work with. We will engage with parents/guardians and community
+      leaders to seek permission and blessings to work with their kids and
+      teenagers.
+     </p>
+
+     <h4>Recruitment of coaches and volunteers</h4>
+     <p>
+      We will recruit and train local coaches and volunteers to lead the
+      football activities. Coaches will be recruited for all
+      categories.(under 11, under 13, Under 15, under 18)
+     </p>
+
+     <h4>Procurement of necessary equipment</h4>
+     <p>
+      We will provide each participating community with a set of
+      footballs, cones, and other necessary equipment.
+     </p>
+
+     <h4>Organizing and implementing football sessions</h4>
+     <p>
+      The kids and teenagers will undergo football sessions under three
+      main categories. Training sessions- normal evening sessions during
+      academic period and morning and evening sessions during holidays.
+      Select tournaments and friendly matches for building confidence,
+      experience and match fitness. This will also provide exposure of the
+      kids and teenagers to scouts and professional teams. Football
+      classes-Video and theory classes for the players to understand and
+      analyze various football tactics, systems and game situations.
+     </p>
+
+     <h4>Post-program support</h4>
+     <p>
+      This phase will involve facilitating the transition of the kids and
+      teenagers from Terminus Soccer Academy to either professional or
+      advanced academic levels. This will be done in the following ways:
+      Terminus Soccer Academy will source for scholarship opportunities at
+      secondary schools and universities.
+      We will help the kids and teenagers apply for these scholarships.
+      We will also build relationships with the academic institutions with
+      the aim of forming partnerships that can facilitate awarding of a few
+      slots of scholarships to our kids and teenagers.
+      We will also work on securing trials opportunities for the kids and
+      teenagers with professional football clubs upon reaching age 16 and
+      above.
+     </p>
+
+     <h4>Evaluation of project impact</h4>
+     <p>
+      We will conduct surveys and interviews with participating children,
+      their parents/guardians, and coaches and partners to assess the
+      impact of the project on fitness levels, teamwork skills, and
+      personal development of the kids and teenagers as well as community
+      development and impact of the program.
+     </p>
+    </div>
+   </section>
+
+   <section id="education-program">
+    <div class="section-header">
+     <h2>Education Program</h2>
+    </div>
+    <div class="program-content">
+     <p>
+      The education program will be key to ensuring that the kids and
+      teenagers and youths within our programs safeguard their futures.
+      Even as we aim to maximize their chances of becoming professional
+     </p>
+     <p>
+      The education program will be key to ensuring that the kids and
+      teenagers and youths within our programs safeguard their futures.
+      Even as we aim to maximize their chances of becoming professional
+      footballers, we understand the importance of a solid education.
+     </p>
+
+     <h3>
+      Objectives and activities for the education program:
+     </h3>
+     <h4>Mentorship program</h4>
+     <p>
+      We will pair each child and teenager with a mentor who will provide
+      guidance and support in their academic pursuits. The mentors will be
+      teachers, community leaders and role models.
+     </p>
+
+     <h4>Academic support</h4>
+     <p>
+      We will provide tutoring and homework assistance to children and
+      teenagers who are struggling in school. We will also offer workshops
+      on study skills and time management.
+     </p>
+
+     <h4>Scholarship program</h4>
+     <p>
+      We will provide scholarships to children and teenagers who are
+      excelling academically but are unable to afford school fees.
+     </p>
+
+     <h4>Life skills training</h4>
+     <p>
+      We will offer workshops on life skills such as communication,
+      problem-solving, and decision-making.
+     </p>
+
+     <h4>Career guidance</h4>
+     <p>
+      We will provide career guidance to teenagers to help them make
+      informed decisions about their future.
+     </p>
+
+     <h4>Community library</h4>
+     <p>
+      We will establish and equip a community library with relevant
+      reading materials to support learning.
+     </p>
+    </div>
+   </section>
+  </main>
+
+  <footer>
+   <div class="footer-content-minimal">
+    <div class="footer-logo">
+     <a href="index.html">
+      <img src="photos/logo.png" alt="Terminus Soccer Academy Logo">
+      <span>Terminus Soccer Academy</span>
+     </a>
+    </div>
+    <div class="footer-social-icons">
+     <a href="YOUR_INSTAGRAM_LINK" target="_blank"><img src="photos/insatlogo.png"
+       alt="Instagram"></a>
+     <a href="YOUR_FACEBOOK_LINK" target="_blank"><img src="photos/fblogo.png" alt="Facebook"></a>
+     <a href="YOUR_WHATSAPP_LINK" target="_blank"><img src="photos/asaplogo.png" alt="WhatsApp"></a>
+     <a href="YOUR_TIKTOK_LINK" target="_blank"><img src="photos/tick.png" alt="TikTok"></a>
+    </div>
+    <p class="copyright">&copy; 2025 Terminus Soccer Academy. All rights reserved.</p>
+   </div>
+  </footer>
+
+  <script>
+  // You can add some basic JavaScript here for simple interactions if needed
+  </script>
+ </body>
+ </html>
